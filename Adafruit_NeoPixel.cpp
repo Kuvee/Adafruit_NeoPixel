@@ -951,7 +951,7 @@ void Adafruit_NeoPixel::show(void) {
       "breq nextbyte20"          "\n\t" // 1-2  if(bit == 0) (from dec above)
       "rol  %[byte]"             "\n\t" // 1    b <<= 1       (T = 10)
       "rjmp .+0"                 "\n\t" // 2    nop nop       (T = 12)
-      "nop"                      "\n\t" // 1    nop           (T = 13)
+      "rjmp .+0"                 "\n\t" // 2    nop nop       (T = 13,14)
       "st   %a[port],  %[lo]"    "\n\t" // 2    PORT = lo     (T = 15)
       "nop"                      "\n\t" // 1    nop           (T = 16)
       "rjmp .+0"                 "\n\t" // 2    nop nop       (T = 18)
@@ -960,7 +960,7 @@ void Adafruit_NeoPixel::show(void) {
       "ldi  %[bit]  ,  8"        "\n\t" // 1    bit = 8       (T = 11)
       "ld   %[byte] ,  %a[ptr]+" "\n\t" // 2    b = *ptr++    (T = 13)
       "st   %a[port], %[lo]"     "\n\t" // 2    PORT = lo     (T = 15)
-      "nop"                      "\n\t" // 1    nop           (T = 16)
+      "rjmp .+0"                 "\n\t" // 2    nop nop       (T = 16,17)
       "sbiw %[count], 1"         "\n\t" // 2    i--           (T = 18)
        "brne head20"             "\n"   // 2    if(i != 0) -> (next byte)
       : [port]  "+e" (port),
