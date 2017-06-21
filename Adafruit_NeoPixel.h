@@ -19,6 +19,7 @@
 #ifndef ADAFRUIT_NEOPIXEL_H
 #define ADAFRUIT_NEOPIXEL_H
 
+#define KUVEE_FREQUENCY_MOD
 #if (ARDUINO >= 100)
  #include <Arduino.h>
 #else
